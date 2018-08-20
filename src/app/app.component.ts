@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Deck } from './classes/deck';
+import { DeckFactoryService } from './services/factories/deck-factory.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'dutch-pub';
+  
+  deck: Deck;
+
+  constructor(
+    private deckFact: DeckFactoryService
+  ) {
+    this.deck = deckFact.getNew();
+  }
+
+
 }
